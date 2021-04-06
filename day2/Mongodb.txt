@@ -1,0 +1,335 @@
+Microsoft Windows [Version 10.0.19041.746]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\Bhavesh Sondagar>use company
+'use' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Bhavesh Sondagar>dbs
+'dbs' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Bhavesh Sondagar>show dbs
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Bhavesh Sondagar>mongo
+MongoDB shell version v4.4.3
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("30e52825-6313-430c-9d47-e23da7b50306") }
+MongoDB server version: 4.4.3
+---
+The server generated these startup warnings when booting:
+        2021-02-02T13:39:25.927+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use company
+switched to db company
+> db.company.insertOne({name:"jash,age:34,mob:987654567,dob:"21-4-1999"})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:59
+> db.company.insertOne({name:"jash",age:34,mob:987654567,dob:"21-4-1999"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("601946b7478d7e6c968932ea")
+}
+> db.company.insertOne({_id:1,name:"jash",age:34,mob:987654567,dob:"21-4-1999"})
+{ "acknowledged" : true, "insertedId" : 1 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+> db.company.insertMany({_id:2,name:"popart",age:35,mob:987654556,dob:4-2-2000"})
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:79
+> db.company.insertMany([{_id:2,name:"popart",age:35,mob:987653426,dob:17-2-2003"},{_id:3,name:"chiku",age:12,mob:7865654556,dob:31-8-1987"_id:4,name:"jaihind",age:35,mob:9879876,dob:5-3-2000"_id:5,name:"prakas",age:45,mob:987657866,dob:12-6-1998"_id:6,name:"denish",age:35,mob:987654556,dob:10-12-2001}])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:78
+> db.company.insertMany([{_id:2,name:"popart",age:35,mob:987653426,dob:17-2-2003},{_id:3,name:"chiku",age:12,mob:7865654556,dob:31-8-1987},{_id:4,name:"jaihind",age:35,mob:9879876,dob:5-3-2000},{_id:5,name:"prakas",age:45,mob:987657866,dob:12-6-1998},{_id:6,name:"denish",age:35,mob:987654556,dob:10-12-2001}])
+{ "acknowledged" : true, "insertedIds" : [ 2, 3, 4, 5, 6 ] }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({},{name:1})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash" }
+{ "_id" : 1, "name" : "jash" }
+{ "_id" : 2, "name" : "popart" }
+{ "_id" : 3, "name" : "chiku" }
+{ "_id" : 4, "name" : "jaihind" }
+{ "_id" : 5, "name" : "prakas" }
+{ "_id" : 6, "name" : "denish" }
+> db.company.find({},{name:2})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash" }
+{ "_id" : 1, "name" : "jash" }
+{ "_id" : 2, "name" : "popart" }
+{ "_id" : 3, "name" : "chiku" }
+{ "_id" : 4, "name" : "jaihind" }
+{ "_id" : 5, "name" : "prakas" }
+{ "_id" : 6, "name" : "denish" }
+> db.company.find({},{_id:2})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea") }
+{ "_id" : 1 }
+{ "_id" : 2 }
+{ "_id" : 3 }
+{ "_id" : 4 }
+{ "_id" : 5 }
+{ "_id" : 6 }
+> db.company.find({_id:2})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+> db.company.find({},{_id:0})
+{ "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({},{name:0})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({},{name:0,mob:o})
+uncaught exception: ReferenceError: o is not defined :
+@(shell):1:28
+> db.company.find({},{name:0,mob:0})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "age" : 34, "dob" : "21-4-1999" }
+{ "_id" : 1, "age" : 34, "dob" : "21-4-1999" }
+{ "_id" : 2, "age" : 35, "dob" : -1988 }
+{ "_id" : 3, "age" : 12, "dob" : -1964 }
+{ "_id" : 4, "age" : 35, "dob" : -1998 }
+{ "_id" : 5, "age" : 45, "dob" : -1992 }
+{ "_id" : 6, "age" : 35, "dob" : -2003 }
+> db.company.find({},{name:0,mob:0,age=0})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:36
+> db.company.find({},{name:0,mob:0,age:0})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "dob" : "21-4-1999" }
+{ "_id" : 1, "dob" : "21-4-1999" }
+{ "_id" : 2, "dob" : -1988 }
+{ "_id" : 3, "dob" : -1964 }
+{ "_id" : 4, "dob" : -1998 }
+{ "_id" : 5, "dob" : -1992 }
+{ "_id" : 6, "dob" : -2003 }
+> db.company.find({age:35})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({age:12})
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+> db.company.find({age:10})
+> db.company.find({age:{$exist:false}})
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "unknown operator: $exist",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.company.find({age:{$exists:false}})
+> db.company.find({age:{$exists:true}})
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+>
+> db.company.find({_id:2,3,4})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:24
+> db.company.find({_id:[2,3,4]})
+> db.company.find({_id:{$in:[2,3,4]}})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+> db.company.find({name:{$in:["chiku","popart"]}})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+> db.company.find({_id:{$gt:1}})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({_id:{$gt:6}})
+> db.company.find({_id:{$lt:6}})
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+> db.company.find({_id:{$lte:3}})
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+> db.company.find({_id:{$gte:3}})
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.find({_id:{$ne:3}})
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+> db.company.find({$and:[{_id:2},{name:"popart}]})
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:48
+> db.company.find({$and:[{_id:2},{name:"popart"}]})
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+> db.company.find({$and:[{_id:1},{name:"popart"}]})
+> db.company.find({$or:[{_id:1},{name:"popart"}]})
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+> db.company.updateOne({age:{$exists:false}},{$set:{age:32}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.company.updateOne({age:{$exists:true}},{$set:{age:32}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 32, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.updateOne({age:{$exists:true}},{$set:{age:87}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 34, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 35, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 12, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 35, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 45, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 35, "mob" : 987654556, "dob" : -2003 }
+> db.company.updateMany({age:{$exists:false}},{$set:{age:87}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.company.updateMany({age:{$exists:true}},{$set:{age:87}})
+{ "acknowledged" : true, "matchedCount" : 7, "modifiedCount" : 6 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 87, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 87, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 87, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 87, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 87, "mob" : 987654556, "dob" : -2003 }
+> db.company.updateOne({_id:3},{$set:{age:50}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 1, "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 87, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 50, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 87, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 87, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 87, "mob" : 987654556, "dob" : -2003 }
+> db.company.find().pretty()
+{
+        "_id" : ObjectId("601946b7478d7e6c968932ea"),
+        "name" : "jash",
+        "age" : 87,
+        "mob" : 987654567,
+        "dob" : "21-4-1999"
+}
+{
+        "_id" : 1,
+        "name" : "jash",
+        "age" : 87,
+        "mob" : 987654567,
+        "dob" : "21-4-1999"
+}
+{
+        "_id" : 2,
+        "name" : "popart",
+        "age" : 87,
+        "mob" : 987653426,
+        "dob" : -1988
+}
+{
+        "_id" : 3,
+        "name" : "chiku",
+        "age" : 50,
+        "mob" : 7865654556,
+        "dob" : -1964
+}
+{
+        "_id" : 4,
+        "name" : "jaihind",
+        "age" : 87,
+        "mob" : 9879876,
+        "dob" : -1998
+}
+{
+        "_id" : 5,
+        "name" : "prakas",
+        "age" : 87,
+        "mob" : 987657866,
+        "dob" : -1992
+}
+{
+        "_id" : 6,
+        "name" : "denish",
+        "age" : 87,
+        "mob" : 987654556,
+        "dob" : -2003
+}
+> db.company.deleteOne({_id:1})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.company.find()
+{ "_id" : ObjectId("601946b7478d7e6c968932ea"), "name" : "jash", "age" : 87, "mob" : 987654567, "dob" : "21-4-1999" }
+{ "_id" : 2, "name" : "popart", "age" : 87, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 50, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 87, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 87, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 87, "mob" : 987654556, "dob" : -2003 }
+> db.company.deleteOne({_id:ObjectId})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.company.deleteOne({_id:ObjectId("60196b7478d7e6c968932ea")})
+Error: invalid object id: length :
+@(shell):1:27
+> db.company.deleteOne({_id:ObjectId("601946b7478d7e6c968932ea")})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.company.find()
+{ "_id" : 2, "name" : "popart", "age" : 87, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 50, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 4, "name" : "jaihind", "age" : 87, "mob" : 9879876, "dob" : -1998 }
+{ "_id" : 5, "name" : "prakas", "age" : 87, "mob" : 987657866, "dob" : -1992 }
+{ "_id" : 6, "name" : "denish", "age" : 87, "mob" : 987654556, "dob" : -2003 }
+>
+> db.company.deleteMany({_id:{$in[4,5]}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:31
+> db.company.deleteMany({_id:{$in:[4,5]}})
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.company.find()
+{ "_id" : 2, "name" : "popart", "age" : 87, "mob" : 987653426, "dob" : -1988 }
+{ "_id" : 3, "name" : "chiku", "age" : 50, "mob" : 7865654556, "dob" : -1964 }
+{ "_id" : 6, "name" : "denish", "age" : 87, "mob" : 987654556, "dob" : -2003 }
+> dbs
+uncaught exception: ReferenceError: dbs is not defined :
+@(shell):1:1
+> db
+company
+>

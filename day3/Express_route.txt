@@ -1,0 +1,35 @@
+// const express = require(“express”);
+// const router = express.Router();
+// module.exports = router ;
+// router.route(“/”)
+// .get((req, res)=>{
+// res.setHeader(‘Content-Type’, ‘text/html’);
+// res.send(“student listing”);
+// });
+
+// .post((req, res)=>{
+// res.setHeader(‘Content-Type’, ‘text/html’);
+// res.send(“student post”);
+// });
+
+// .put((req, res)=>{
+// res.setHeader(‘Content-Type’, ‘text/html’);
+// res.send(“student put”);
+// });
+
+// .delete((req, res)=>{
+// res.setHeader(‘Content-Type’, ‘text/html’);
+// res.send(“student delete”);
+// });
+
+var express = require("express");
+var router = express.Router();
+module.exports = router;
+router
+.route("/")
+.get()((req, res)=>{
+ res.status(2000)
+ res.send("This is our student - home page");
+
+ });
+

@@ -1,0 +1,60 @@
+<html>
+<body>
+	<table border=1>
+		<thead>
+			<th>id</th>
+			<th>email</th>
+			<th>first name</th>
+			<th>last name</th>
+			<th>avatar</th>
+		</thead>
+		<tbody id ="table_data">
+			<!-- <td>1</td>
+			<td>abc@xyz.com</td>
+			<td>priyanka</td>
+			<td>bagde</td>
+			<td>image</td> -->
+		</tbody>
+	</table>
+
+	<!-- <div id="records"></div> -->
+</body>
+<script>
+function getRecords(){
+	fetch('https://reqres.in/api/users?page=1')
+	.then(response => response.json())
+	.then(data => {
+		//console.log(data);
+		//console.log(data.data);
+		console.table(data.data);
+		showDataInTable(data.data);
+		// document.getElementById("records").innerHTML = data.data;
+	});
+
+}
+
+getRecords();
+
+function showDataInTable(data){
+	//console.log(data);
+	// console.log("show data in table function called");
+	var t_data = ""; // complete inner html passing
+ 
+	data.forEach((item) => {
+		// console.log(item.id);
+		t_data += `<tr>`
+            t_data += `<td>${item.id}</td>`
+            t_data += `<td>${item.email}</td>`
+            t_data += `<td>${item.first_name}</td>`
+            t_data += `<td>${item.last_name}</td>`
+            t_data += `<td><img src = "${item.avatar}" /></td>`
+		
+		t_data += `</tr>`
+	});
+
+	document.getElementById("table_data").innerHTML = t_data;
+
+}
+
+</script>
+</html>

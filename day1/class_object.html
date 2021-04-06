@@ -1,0 +1,43 @@
+<html>
+
+<script>
+
+    //console.log(10);
+
+// class blue print of the design
+// Contructor () - 
+    class Rect {
+        constructor( l , b){
+            //console.log("you are in constructor");
+            this.len = l;
+            this.bre = b;
+
+        }
+
+        area(){
+             let a = this.len * this.bre;
+            console.log(`Area of Rectangle : ${a}`);
+            //console.log("This is area function");
+        } 
+        perimeter (){
+            let b = 2 * this.len * this.bre;
+            console.log(`Area of Perimeter : ${b}`);
+            //console.log("This is sub function")
+        }
+        mul(){
+            console.log("This is mul function");
+        }
+
+    }
+
+var objcls1 = new Rect(6,8);
+var objcls2 = new Rect(4,5);
+objcls1.area();
+objcls2.perimeter();
+//objcls1.mul();
+//console.log(objcls1);
+//console.log(objcls2);
+//objcls2.sub();
+
+</script>
+</html>

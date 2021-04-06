@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <!---events : onkeyup , onkeydown , onkeypress , onclick -->
+        Number : <input type="text" name="number" id="num" />
+        <span id ="error"></span>
+        <!-- <button onclick ="sqr()">calculate square</button> -->
+        <button id ="sqr">calculate square</button>
+        <br><br>
+
+        <!--Result : <input type="text" name="result" id="res"/>-->
+        <h3>Result:</h3> <span id ="result"></span>
+    </body>
+    <script>
+        const sqrButton = document.getElementById("sqr"); 
+
+        sqrButton.addEventListener('click',function () {
+            var x = document.querySelector("#num").value;
+            alert("event is called");
+            if (x == '')
+            {
+              document.getElementById("error").innerHTML = "Please enter a number";
+            }
+            else {
+                sqr();
+            }
+
+        });
+        sqrButton.addEventListener('mouseover',function () {
+            console.log("hover even is called");
+
+        });
+        
+
+     //console.log(90);
+     function sqr (){
+        // console.log("Square");
+        // var x = document.getElementById("num").value;
+         var x = document.querySelector("#num").value;
+         z = x*x ;
+         document.querySelector("#result").innerHTML = z;
+        //console.log(z);
+
+     }
+    //  var x = document.getElementById("num").value
+    //  console.log(x);<button onclick ="sqr()">calculate square</button>//Number : <input type="text" name="number" id="num" onkeydown="sqr()" />
+    </script>
+</html>

@@ -1,0 +1,11 @@
+<p>Addition of numbers!</p>
+<form [formGroup ]= "form" (ngSubmit) ="add()">
+1st  Number
+<input type = "text" formControlName = "num1"/>
+2nd Number 
+<input type = "text" formControlName = "num1/">
+
+<input type = "submit" value = "Add"/>
+</form>
+
+<div>Addition value of {{form.value.num1}} and {{form.value.num2}}  is {{formResult}}</div>

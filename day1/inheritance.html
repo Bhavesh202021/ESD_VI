@@ -1,0 +1,67 @@
+<!-- class bank (){
+    methods
+}
+class sbi extends bank(){
+
+}
+class icici (){
+
+} -->
+<html>
+    <!-- class name = Title case;
+    method name = showData;
+    var name = first_name; -->
+    <script>
+        class Bank {
+            constructor(b){
+                this.bal = b;
+
+            }
+            deposite(amt){
+                this.bal += amt;
+            }
+            withdraw(amt){
+                this.bal -= amt;
+
+            }
+            showBalance(){
+                console.log(`current balance is ${this.bal}`);
+            }
+
+        }
+
+        class sbi extends Bank{
+            constructor(b){
+                super(b);
+            }
+            withdraw(amt){
+                this.bal = (this.bal -amt) - 50;
+
+            }
+            deposite(amt){
+                this.bal += amt;
+            }
+
+        }
+
+        class Hdfc extends Bank{
+            constructor(b){
+                super(b);
+            }
+            deposite(amt){
+                this.bal = (this.bal + amt);
+
+            }
+
+        }
+    account1 = new sbi(1000);
+    account1.withdraw(100);
+    account1.deposite(200);
+    account1.showBalance();
+    
+    account2 = new Hdfc(2000);
+    account2.deposite(200);
+    account2.showBalance();
+
+    </script>
+</html>
